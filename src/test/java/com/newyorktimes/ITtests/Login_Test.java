@@ -15,9 +15,6 @@ public class Login_Test extends Base {
 	
 	WebDriver driver;
 	
-	
- 
-	
 	@BeforeTest
 	public void setup() {
 		setup();	
