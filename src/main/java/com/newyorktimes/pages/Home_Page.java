@@ -7,20 +7,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
 import com.newyorktimes.utilities.Newspaperdate;
 
+
 public class Home_Page {
-	
-	String ExpectedTitle = " ";
-	String ExpectedDate = " ";
 	
 	Newspaperdate date = new Newspaperdate();
 	
 	WebDriver driver;
 	
-    public Home_Page(WebDriver driver) {
-		this.driver = driver;
-	}
 
 	By Title = By.xpath("");
 	By datefield = By.xpath("");
@@ -28,13 +24,9 @@ public class Home_Page {
     By footerArtlinks= By.xpath("//nav[contains(@id, 'site-index')]/div/div/following::div/div/section//h3[contains(text(), 'Arts')]/following::ul/li/a");
     		
    
-	/*public void verifytitle() {
-		WebElement title = driver.findElement(Title);
-		String ActualTitle = title.getText();
-		Assert.assertEquals(false, null);
-	} */
+	
 
-	public void verifydatefield() {
+	public void verifyDateField() {
 		WebElement ad = driver.findElement(datefield); 
 		String actualnewsdate = ad.getText();
 		String expectednewsdate=date.getDayMonthDateYear();
@@ -43,7 +35,7 @@ public class Home_Page {
 
 	}
 
-	public void verifynavigationmenu() {
+	public void verifyNavigationMenu() {
 		
 		ArrayList<String> emenu = new ArrayList<String>();
 		emenu.add("U.S.");
@@ -59,16 +51,16 @@ public class Home_Page {
 		emenu.add("The Athletic");
 		
 		
-		List<WebElement> menuelements = driver.findElements(Navigation);
-		for (int i = 0; i <= menuelements.size(); i++) {
-		    String ActualmenuText = menuelements.get(i).getText();
+		List<WebElement> menuElements = driver.findElements(Navigation);
+		for (int i = 0; i <= menuElements.size(); i++) {
+		    String ActualmenuText = menuElements.get(i).getText();
 		    String ExpectedmenuText = emenu.get(i);
 		    Assert.assertEquals(ActualmenuText, ExpectedmenuText);
 		}
 
 	}
 
-	public void verifyfootelinks() {
+	public void verifyFooterLinks() {
 		
 		ArrayList<String> links = new ArrayList<String>();
 		links.add("Books");

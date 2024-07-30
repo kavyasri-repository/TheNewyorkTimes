@@ -1,23 +1,33 @@
 # TheNewyorkTimes-Automation-Framework
-Read Me
+README FILE
 
 Selenium TestNG with JAVA is used in this project for UI Automation.
 
+Features:
+* Pages
+* Tests
+* Base Class
+* Runner File
+* Utilities
+* Test Data Files
+* Driver Factory
+
 Imp Notes:
 
-Base file is in src\test\java\Base folder, By using this code we can execute tests in Multiple browsers
-TestData files is in src\test\resources\testdata folder
-Data reading class files are in src\test\DataReading folder
-Integrations test class files in src\test\java  under package name:com.newyorktimes.ITtests 
-Page Objects and Page level methods are in src\test\java under package name:com.newyorktimes.pages
-Utility classes are in src\test\java under package name:com.newyorktimes.utilities
+* BrowserFactory class is under src/main/java - By using this code we can execute tests in Multiple browsers
+* Base file is in src\test\java\Base folder - Browser set up and closing added here
+* TestData files is in src\main\resources\testdata folder
+* Data reading class files are in src\main\java\DataReading folder
+* Integrations test class files in src\test\java  under package name:com.newyorktimes.ITtests 
+* Page Objects and Page level methods are in src\main\java under package name:com.newyorktimes.pages
+* Utility classes are in src\test\java under package name:com.newyorktimes.utilities
 
 How to Run this project:
 
-Update maven dependecies.
+Update maven dependencies.
 Under testng.xml place class files to execute
 Run as testNg.xml 
-tesng reports will get generate in test output folder 
+testng reports will get generate in test output folder 
 Run through cmd: mvn clean test -Dsurefire.suiteXmlFiles=/path/to/testng.xml
 
 Test cases written for below scenarios:

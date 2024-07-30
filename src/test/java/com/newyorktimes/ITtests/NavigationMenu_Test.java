@@ -7,26 +7,16 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.newyorktimes.base.Base;
 import com.newyorktimes.pages.Home_Page;
 
-public class NavigationMenu_Test {
-WebDriver driver;
-	
-	@BeforeTest
-	public void setup() {
-		setup();	
-	}
-	
+public class NavigationMenu_Test extends Base {
+	WebDriver driver;
+
 	@Test
-	public void verifynewspaperNavigationMenu() throws InterruptedException, IOException {
-		Home_Page home = new Home_Page(null);
-		home.verifynavigationmenu();
-	}
-	
-	@AfterTest
-	public void tearDown() {	
-		driver.quit();
-			
+	public void verifynewspaperNavigationMenu(){
+		Home_Page home = new Home_Page();
+		home.verifyNavigationMenu();
 	}
 
 }

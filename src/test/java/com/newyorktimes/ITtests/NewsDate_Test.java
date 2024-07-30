@@ -7,27 +7,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.newyorktimes.base.Base;
 import com.newyorktimes.pages.Home_Page;
 
-public class NewsDate_Test {
-	
-WebDriver driver;
-	
-	@BeforeTest
-	public void setup() {
-		setup();	
-	}
-	
+public class NewsDate_Test extends Base {
+
+	WebDriver driver;
+
 	@Test
-	public void verifynewsDate() throws InterruptedException, IOException {
-		Home_Page home = new Home_Page(null);
-		home.verifydatefield();	
-	}
-	
-	@AfterTest
-	public void tearDown() {	
-		driver.quit();
-			
+	public void verifynewsDate(){
+		Home_Page home = new Home_Page();
+		home.verifyDateField();
 	}
 
 }

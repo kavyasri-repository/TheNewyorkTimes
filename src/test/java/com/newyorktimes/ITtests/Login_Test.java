@@ -15,22 +15,15 @@ public class Login_Test extends Base {
 	
 	WebDriver driver;
 	
-	@BeforeTest
-	public void setup() {
-		setup();	
-	}
-	
 	@Test
-	public void loginTest() throws InterruptedException, IOException {
-		Login_Page login = new Login_Page(null);
-		
-		login.verifylogin();	
-	}
-	
-	@AfterTest
-	public void tearDown() {	
-		driver.quit();
-			
+	public void loginTest(){
+		Login_Page login = new Login_Page();
+		try {
+			login.verifylogin();
+		} catch (InterruptedException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 }

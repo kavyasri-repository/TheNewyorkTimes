@@ -37,12 +37,6 @@ public class Newspaperdate {
  
         // Get year from date
         int year = currentDate.getYear();
- 
-        // Print the day, month, and year
-        System.out.println("Day: " + day);
-        System.out.println("Month: " + month);
-        System.out.println("Month: " + onlydate);
-        System.out.println("Year: " + year);
         
         String expectedday = String. valueOf(day); 
         String expectedmonth = String. valueOf(month); 

@@ -16,9 +16,7 @@ public class Login_Page extends DataReading{
 	By Password=By.id("password");
 	By Login_Btn=By.id("login");
 	
-	public Login_Page(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	
 	public void verifylogin() throws InterruptedException, IOException {

@@ -21,15 +21,12 @@ public class ReadingDatFromExcel {
 		
 		XSSFWorkbook workbook= new XSSFWorkbook(file);
 		
-		//we always gives the name of the sheet so getsheet not getsheetat
-		XSSFSheet sheet=workbook.getSheet("Sheet1");   //	XSSFSheet sheet=workbook.getSheetAt(0);
+		
+		XSSFSheet sheet=workbook.getSheet("Sheet1");   
 
 		int totalRows= sheet.getLastRowNum();
 		
 		int totalCells= sheet.getRow(1).getLastCellNum();
-
-		System.out.println("No.of rows: " + totalRows); //5
-		System.out.println("No.of cells: " + totalCells); //4
 
 		for(int r=0; r<=totalRows; r++)
 		{
@@ -41,7 +38,6 @@ public class ReadingDatFromExcel {
 				System.out.print(cell.toString()+"\t");
 			}
 			
-			System.out.println();
 		}
 		
 		workbook.close();
