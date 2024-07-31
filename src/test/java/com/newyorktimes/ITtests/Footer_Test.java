@@ -1,22 +1,25 @@
 package com.newyorktimes.ITtests;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.newyorktimes.base.Base;
 import com.newyorktimes.pages.Home_Page;
+import com.newyorktimes.utilities.Constants;
 
 public class Footer_Test extends Base {
-
-	WebDriver driver;
-
+	
+	Home_Page footer;
+	
+	public Footer_Test()
+	{
+		footer = new Home_Page();
+	}
+	
 	@Test
 	public void verifynewspaperSections() {
-		Home_Page home = new Home_Page();
-		home.verifyFooterLinks();
+		footer.verifyFooterLinks();
 	}
 }
+
+
+

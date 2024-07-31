@@ -7,35 +7,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
-	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
-
-	/*
-	 * Factory method for getting browsers
-	 */
+	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();	
 	public static WebDriver getBrowser(String browserName) {
 		WebDriver driver = null;
 
 		switch (browserName) {
+		case "Edge":
+			driver = drivers.get("Edge");
+			if (driver == null) {
+				WebDriverManager.chromedriver().setup();
+				driver= new EdgeDriver();
+				driver.manage().window().maximize();
+			}
+			break;
 		case "Firefox":
 			driver = drivers.get("Firefox");
 			if (driver == null) {
 				WebDriverManager.chromedriver().setup();
 				driver= new FirefoxDriver();
 				driver.manage().window().maximize();
-			}
-			break;
-		case "IE":
-			driver = drivers.get("IE");
-			if (driver == null) {
-				 WebDriverManager.chromedriver().setup();
-				 driver= new EdgeDriver();
-				 driver.manage().window().maximize();
 			}
 			break;
 		case "Chrome":
@@ -50,14 +44,13 @@ public class BrowserFactory {
 			driver = drivers.get("Safari");
 			if (driver == null) {
 				WebDriverManager.chromedriver().setup();
-	 			driver= new SafariDriver();
-	 			driver.manage().window().maximize();
+				driver= new SafariDriver();
+				driver.manage().window().maximize();
 			}
 			break;
 		}
 		return driver;
 	}
-	
 	public static void closeAllDriver() {
 		for (String key : drivers.keySet()) {
 			drivers.get(key).close();

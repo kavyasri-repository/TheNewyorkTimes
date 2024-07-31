@@ -1,9 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TheNewyorkTimes">
+	<listeners>
+        <listener class-name="com.newyorktimes.TestListener"/>
+        <listener class-name="com.newyorktimes.AnnotationTransformer"/>
+    </listeners>
     <test name="TheNewyorkTimes" parallel = "methods" thread-count = "2">
 		<parameter name="browser" value="chrome" />
         <classes>
             <class name="com.newyorktimes.ITtests.Login_Test"/>
+            <class name="com.newyorktimes.base.Base"/>
             <class name="com.newyorktimes.ITtests.NewsDetails_Test"/>
             
         </classes>
