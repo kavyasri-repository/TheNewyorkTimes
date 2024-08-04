@@ -2,35 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-04T13:14:10 IST" name="Default suite" finished-at="2024-08-04T13:15:42 IST" duration-ms="91708">
+  <suite started-at="2024-08-04T16:00:19 IST" name="Default suite" finished-at="2024-08-04T16:00:33 IST" duration-ms="14105">
     <groups>
     </groups>
-    <test started-at="2024-08-04T13:14:10 IST" name="Default test" finished-at="2024-08-04T13:15:42 IST" duration-ms="91708">
-      <class name="com.newyorktimes.ITtests.NewsDate_Test">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:com.newyorktimes.ITtests.NewsDate_Test@7ce69770]" started-at="2024-08-04T13:14:10 IST" name="setup" finished-at="2024-08-04T13:15:41 IST" duration-ms="90888" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.newyorktimes.ITtests.NewsDate_Test@7ce69770]" started-at="2024-08-04T13:15:41 IST" name="setUp" finished-at="2024-08-04T13:15:41 IST" duration-ms="21" status="PASS">
+    <test started-at="2024-08-04T16:00:19 IST" name="Default test" finished-at="2024-08-04T16:00:33 IST" duration-ms="14105">
+      <class name="com.newyorktimes.ITtests.Login_Test">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.newyorktimes.ITtests.Login_Test@6fa51cd4]" started-at="2024-08-04T16:00:19 IST" name="setUp" finished-at="2024-08-04T16:00:27 IST" duration-ms="8098" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyNewsDate()[pri:0, instance:com.newyorktimes.ITtests.NewsDate_Test@7ce69770]" started-at="2024-08-04T13:15:41 IST" name="verifyNewsDate" finished-at="2024-08-04T13:15:41 IST" duration-ms="49" status="PASS">
+        <test-method signature="loginTest()[pri:0, instance:com.newyorktimes.ITtests.Login_Test@6fa51cd4]" started-at="2024-08-04T16:00:27 IST" name="loginTest" finished-at="2024-08-04T16:00:32 IST" duration-ms="5087" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyNewsDate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.newyorktimes.ITtests.NewsDate_Test@7ce69770]" started-at="2024-08-04T13:15:41 IST" name="tearDown" finished-at="2024-08-04T13:15:42 IST" duration-ms="715" status="PASS">
+        </test-method> <!-- loginTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.newyorktimes.ITtests.Login_Test@6fa51cd4]" started-at="2024-08-04T16:00:32 IST" name="tearDown" finished-at="2024-08-04T16:00:33 IST" duration-ms="868" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.newyorktimes.ITtests.NewsDate_Test -->
+      </class> <!-- com.newyorktimes.ITtests.Login_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

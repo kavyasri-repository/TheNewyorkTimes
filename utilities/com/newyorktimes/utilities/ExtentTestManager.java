@@ -1,20 +1,27 @@
 package com.newyorktimes.utilities;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 public class ExtentTestManager {
+	// Use ConcurrentMap for better performance in multithreaded scenarios
+	private static final ConcurrentMap<Long, ExtentTest> extentTestMap = new ConcurrentHashMap<>();
+	private static final ExtentReports extent = ExtentManager.createExtentReports();
 
-	static Map<Integer, ExtentTest> extentTestMap = new HashMap<>();
-	static ExtentReports            extent        = ExtentManager.createExtentReports();
-	public static synchronized ExtentTest getTest() {
-		return extentTestMap.get((int) Thread.currentThread().getId());
+	public static ExtentTest getTest() {
+		return extentTestMap.get(Thread.currentThread().getId());
 	}
-	public static synchronized ExtentTest startTest(String testName, String desc) {
+
+	public static ExtentTest startTest(String testName, String desc) {
 		ExtentTest test = extent.createTest(testName, desc);
-		extentTestMap.put((int) Thread.currentThread().getId(), test);
+		extentTestMap.put(Thread.currentThread().getId(), test);
 		return test;
+	}
+
+	public static void endTest() {
+		extentTestMap.remove(Thread.currentThread().getId());
 	}
 }
