@@ -11,8 +11,6 @@
 			./Sets/Suits/CMS_Administration_SiteBackup_029.xml,
 		</defaultSuiteFiles>
 		<suiteFile>${defaultSuiteFiles}</suiteFile>
-
-
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

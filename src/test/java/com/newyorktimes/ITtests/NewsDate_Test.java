@@ -1,20 +1,20 @@
 package com.newyorktimes.ITtests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.newyorktimes.base.Base;
 import com.newyorktimes.pages.Home_Page;
 
 public class NewsDate_Test extends Base {
 
-Home_Page newsdate;
-	
-	public  NewsDate_Test()
-	{
-		newsdate = new Home_Page();
+	private Home_Page newsDate;
+	@BeforeMethod
+	public void setUp() {
+		// Ensure the WebDriver is initialized in the Base class
+		newsDate = new Home_Page(driver); // Pass WebDriver instance to Home_Page
 	}
-	
 	@Test
-	public void verifynewsDate(){
-		newsdate.verifyDateField();
+	public void verifyNewsDate() {
+		newsDate.verifyDateField();
 	}
 }

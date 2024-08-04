@@ -1,50 +1,64 @@
 package com.newyorktimes.pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import com.newyorktimes.utilities.Constants;
 import com.newyorktimes.utilities.Newspaperdate;
+import java.util.List;
 
 public class Home_Page {
-	Newspaperdate date = new Newspaperdate();
-	WebDriver driver;
-
-	By datefield = By.xpath("//span[@data-testid='todays-date']");
-	By Navigation = By.xpath("//div[contains(@data-testid, 'masthead-container')]/descendant::div[contains(@data-testid, 'masthead-nested-nav')]/nav/ul/li/a");
-	By footerArtlinks= By.xpath("//nav[contains(@id, 'site-index')]/div/div/following::div/div/section//h3[contains(text(), 'Arts')]/following::ul/li/a");
-	
+	private WebDriver driver;
+	private Newspaperdate date = new Newspaperdate();
+	// Locators using @FindBy
+	@FindBy(xpath = "//span[@data-testid='todays-date']")
+	private WebElement dateElement;
+	@FindBy(xpath = "//div[contains(@data-testid, 'masthead-container')]/descendant::div[contains(@data-testid, 'masthead-nested-nav')]/nav/ul/li/a")
+	private List<WebElement> navigationMenu;
+	@FindBy(xpath = "//nav[contains(@id, 'site-index')]/div/div/following::div/div/section//h3[contains(text(), 'Arts')]/following::ul/li/a")
+	private List<WebElement> footerArtLinks;
+	// Constructor
+	public Home_Page(WebDriver driver) {
+		if (driver == null) {
+			throw new IllegalArgumentException("WebDriver cannot be null");
+		}
+		this.driver = driver;
+		PageFactory.initElements(driver, this); // Initialize elements
+	}
 	public void verifyDateField() {
-		WebElement datevariable = driver.findElement(datefield);
-		String actualnewsdate = datevariable.getText();
-		String expectednewsdate=date.getDayMonthDateYear();
-		// Need to write the logic for to get the expected date 	
-		Assert.assertEquals(actualnewsdate,expectednewsdate);
-	}
-	public void verifyNavigationMenu() 
-	{	
-		List<WebElement> menuElements = driver.findElements(Navigation);
-		for (int i = 0; i <= menuElements.size(); i++) {
-			String ActualmenuText = menuElements.get(i).getText();
-			String ExpectedmenuText = Constants.emenu.get(i);
-			Assert.assertEquals(ActualmenuText, ExpectedmenuText);
+		try {
+			String actualNewsDate = dateElement.getText();
+			String expectedNewsDate = Newspaperdate.getDayMonthDateYear();
+			Assert.assertEquals(actualNewsDate, expectedNewsDate, "The date displayed is incorrect.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("An error occurred while verifying the date field: " + e.getMessage());
 		}
 	}
-	public void verifyFooterLinks() 
-	{	
-		List<WebElement> footer_links = driver.findElements(footerArtlinks);
-		
-		for (int i = 0; i <= footer_links.size(); i++) {
-			String ActualfooterlinkText = footer_links.get(i).getText();
-			String ExpectedfooterlinkText = Constants.links.get(i);
-		    Assert.assertEquals(ActualfooterlinkText, ExpectedfooterlinkText);
+	public void verifyNavigationMenu() {
+		try {
+			for (int i = 0; i < navigationMenu.size(); i++) { // Use < instead of <=
+				String actualMenuText = navigationMenu.get(i).getText();
+				String expectedMenuText = Constants.emenu.get(i);
+				Assert.assertEquals(actualMenuText, expectedMenuText, "Navigation menu item mismatch at index " + i);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("An error occurred while verifying the navigation menu: " + e.getMessage());
 		}
-		
-		
+	}
+	public void verifyFooterLinks() {
+		try {
+			for (int i = 0; i < footerArtLinks.size(); i++) { // Use < instead of <=
+				String actualFooterLinkText = footerArtLinks.get(i).getText();
+				String expectedFooterLinkText = Constants.links.get(i);
+				Assert.assertEquals(actualFooterLinkText, expectedFooterLinkText, "Footer link mismatch at index " + i);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("An error occurred while verifying the footer links: " + e.getMessage());
+		}
 	}
 }

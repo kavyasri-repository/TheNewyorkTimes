@@ -1,38 +1,29 @@
 package com.newyorktimes.base;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-
 import com.newyorktimes.DriverFactory.BrowserFactory;
-import com.newyorktimes.data.DataReading;
 
-public class Base extends DataReading {
+public class Base{
 	public WebDriver driver;
 
-	 
-	public WebDriver getDriver() {
-        return driver;
-    }
-
-    @BeforeSuite
-    public void setupProxy() {
-
-    }
-
-
 	@Parameters("browser")
-	@BeforeTest
-	public void setup(@Optional("Chrome")String BrowserName) {
-		WebDriver driver = BrowserFactory.getBrowser(BrowserName);
-		driver.get(prop.getProperty("url"));
+	@BeforeClass
+	public void setup(@Optional("chrome")String browserName) {
+		//prop = new Properties();	
+		try {
+			driver = BrowserFactory.getBrowser(browserName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-		
-	@AfterTest
+	@AfterClass
 	public void tearDown() {
-		BrowserFactory.closeAllDriver();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 }

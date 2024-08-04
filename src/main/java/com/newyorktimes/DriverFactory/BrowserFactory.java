@@ -1,61 +1,46 @@
 package com.newyorktimes.DriverFactory;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
-	private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();	
-	public static WebDriver getBrowser(String browserName) {
+	public static WebDriver getBrowser(String browserName) throws IOException {
+		FileReader reader = new FileReader("C:\\TheNewyorkTimes\\src\\main\\resources\\testdata\\config.properties");
+		Properties props = new Properties();
+		props.load(reader);
 		WebDriver driver = null;
-
-		switch (browserName) {
-		case "Edge":
-			driver = drivers.get("Edge");
-			if (driver == null) {
-				WebDriverManager.chromedriver().setup();
-				driver= new EdgeDriver();
-				driver.manage().window().maximize();
-			}
+		switch (browserName.toLowerCase()) {
+		case "chrome":
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
 			break;
-		case "Firefox":
-			driver = drivers.get("Firefox");
-			if (driver == null) {
-				WebDriverManager.chromedriver().setup();
-				driver= new FirefoxDriver();
-				driver.manage().window().maximize();
-			}
+		case "firefox":
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 			break;
-		case "Chrome":
-			driver = drivers.get("Chrome");
-			if (driver == null) {
-				WebDriverManager.chromedriver().setup();
-				driver= new ChromeDriver();
-				driver.manage().window().maximize();
-			}
+		case "safari":
+			driver = new SafariDriver();
 			break;
-		case "Safari":
-			driver = drivers.get("Safari");
-			if (driver == null) {
-				WebDriverManager.chromedriver().setup();
-				driver= new SafariDriver();
-				driver.manage().window().maximize();
-			}
+		case "edge":
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
 			break;
+		default:
+			throw new IllegalArgumentException("Browser " + browserName + " not supported.");
 		}
+		driver.get(props.getProperty("url"));
+		driver.manage().window().maximize();
 		return driver;
 	}
-	public static void closeAllDriver() {
-		for (String key : drivers.keySet()) {
-			drivers.get(key).close();
-			drivers.get(key).quit();
-		}
-
+	public static void closeAllDrivers() {
+		// This method can be used to close all driver instances if you keep track of multiple instances
 	}
 }

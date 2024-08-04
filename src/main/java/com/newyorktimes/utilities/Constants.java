@@ -9,5 +9,4 @@ public class Constants
 
 	public static final List<String> links =Arrays.asList("Books", "Best Sellers Book List", "Dance", "Movies",
 			"Music", "Television", "Theater", "Visual Arts");
-
 }
