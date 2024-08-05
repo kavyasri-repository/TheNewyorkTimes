@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.newyorktimes.randomdatagenerator.RandomDataGenerator;
+
+import jdk.internal.org.jline.utils.Log;
+
 import java.time.Duration;
 
 public class Login_Page {
@@ -40,23 +43,23 @@ public class Login_Page {
 			// Wait for the login button to be clickable and click it
 			WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(Login_Btn));
 			loginButton.click();
-			System.out.println("Login button clicked.");
+			Log.info("Login button clicked.");
 			// Wait for the email input field to be visible and enter the email
 			WebElement emailField = wait.until(ExpectedConditions.visibilityOf(EmailID));
 			emailField.sendKeys(randomEmail);
-			System.out.println("Email entered.");
+			Log.info("Email entered.");
 			// Wait for the continue button to be clickable and click it
 			WebElement continueButton = wait.until(ExpectedConditions.elementToBeClickable(Continue_Btn));
 			continueButton.click();
-			System.out.println("Continue button clicked.");
+			Log.info("Continue button clicked.");
 			// Wait for the password input field to be visible and enter the password
 			WebElement passwordField = wait.until(ExpectedConditions.visibilityOf(Password));
 			passwordField.sendKeys(randomPassword);
-			System.out.println("Password entered.");
+			Log.info("Password entered.");
 			// Wait for the create account button to be clickable and click it
 			WebElement createAccountButton = wait.until(ExpectedConditions.elementToBeClickable(CreateAccount_Btn));
 			createAccountButton.click();
-			System.out.println("Create account button clicked.");
+			Log.info("Create account button clicked.");
 			// Optional: Verify login success (implement based on your application)
 			// WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("success-message-id")));
 			// Assert.assertTrue(successMessage.isDisplayed(), "Login was not successful");

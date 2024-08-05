@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 //Excel File---> Workbook----> sheets----> Rows----> Cells
-public class ReadingDatFromExcel {
+public class ReadingDataFromExcel {
 	//throws remove - getting error if we remove throws
 	public void dataread()throws IOException 
 	{

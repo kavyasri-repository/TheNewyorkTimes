@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
 	public static WebDriver getBrowser(String browserName) throws IOException {
-		FileReader reader = new FileReader("C:\\TheNewyorkTimes\\src\\main\\resources\\testdata\\config.properties");
+		FileReader reader = new FileReader(System.getProperty("user.dir")+"testdata\\config.properties");
 		Properties props = new Properties();
 		props.load(reader);
 		WebDriver driver = null;
